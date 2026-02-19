@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import InputBox from "./components/InputBox";
+import ResultBox from "./components/ResultBox";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState("");
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="d-flex justify-content-center flex-column mt-5">
+        <div className="d-flex justify-content-center mb-5">
+          <h1>Sentiment things</h1>
+        </div>
+        <div className="d-flex gap-2 mb-5">
+          <InputBox
+            loading={loading}
+            setLoading={setLoading}
+            onResultReceived={(res) => setResult(res)}
+          />
+        </div>
+        <div className="d-flex justify-content-center mb-5">
+          <ResultBox result={result} />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
-
-export default App
