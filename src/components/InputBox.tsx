@@ -8,6 +8,8 @@ export default function InputBox(props: {
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | undefined>();
 
+  const responses = ["positive 😄", "neutral 😐", "negative 😡"];
+
   const onButtonClick = () => {
     setError(undefined);
     props.setLoading(true);
@@ -16,7 +18,9 @@ export default function InputBox(props: {
       props.setLoading(false);
     }, 1000);
 
-    props.onResultReceived(input);
+    // Random response
+    const randomIndex = Math.floor(Math.random() * responses.length);
+    props.onResultReceived(responses[randomIndex]);
     // fetch("...")
     //   .then((res) => res.json())
     //   .then((res) => props.onResultReceived(res))

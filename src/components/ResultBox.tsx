@@ -3,5 +3,9 @@ export default function ResultBox(props: { result: string }) {
     return <>No result!</>;
   }
 
-  return <>{props.result}</>;
+  return (
+    <p className="display-5">
+      Result: <b>{props.result}</b>
+    </p>
+  );
 }
