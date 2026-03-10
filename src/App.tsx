@@ -1,10 +1,11 @@
 import { useState } from "react";
 import InputBox from "./components/InputBox";
 import ResultBox from "./components/ResultBox";
+import type { ISentimentResponse } from "./ISentimentResponse";
 
 export default function App() {
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState<ISentimentResponse>();
 
   return (
     <div className="container">

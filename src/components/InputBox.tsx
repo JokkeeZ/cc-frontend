@@ -1,9 +1,10 @@
 import { Activity, useState, type Dispatch, type SetStateAction } from "react";
+import type { ISentimentResponse } from "../ISentimentResponse";
 
 export default function InputBox(props: {
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  onResultReceived: (result: string) => void;
+  onResultReceived: (result: ISentimentResponse) => void;
 }) {
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | undefined>();

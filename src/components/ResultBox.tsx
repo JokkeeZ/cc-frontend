@@ -1,6 +1,8 @@
 import type { ISentimentResponse } from "../ISentimentResponse";
 
-export default function ResultBox(props: { result: ISentimentResponse }) {
+export default function ResultBox(props: {
+  result: ISentimentResponse | undefined;
+}) {
   if (!props.result) {
     return <>No result!</>;
   }
