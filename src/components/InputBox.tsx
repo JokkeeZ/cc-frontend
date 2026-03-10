@@ -8,24 +8,24 @@ export default function InputBox(props: {
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | undefined>();
 
-  const responses = ["positive 😄", "neutral 😐", "negative 😡"];
-
   const onButtonClick = () => {
     setError(undefined);
     props.setLoading(true);
 
-    setTimeout(() => {
-      props.setLoading(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   props.setLoading(false);
+    // }, 1000);
 
-    // Random response
-    const randomIndex = Math.floor(Math.random() * responses.length);
-    props.onResultReceived(responses[randomIndex]);
-    // fetch("...")
-    //   .then((res) => res.json())
-    //   .then((res) => props.onResultReceived(res))
-    //   .catch((err) => setError(err))
-    //   .finally(() => props.setLoading(false));
+    fetch("https://route-rapid-vulture-cloud-computing.2.rahtiapp.fi/api", {
+      method: "POST",
+      body: JSON.stringify({
+        sentiment: input,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => props.onResultReceived(res))
+      .catch((err) => setError(err))
+      .finally(() => props.setLoading(false));
   };
 
   return (
