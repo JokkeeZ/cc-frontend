@@ -26,9 +26,13 @@ export default function InputBox(props: {
         if (!res.ok) {
           throw new Error(`Request failed: ${res.status}`);
         }
+
         return res.json();
       })
-      .then((data) => props.onResultReceived(data))
+      .then((data) => {
+        console.log(data);
+        props.onResultReceived(data);
+      })
       .catch((err) => setError(err.toString()))
       .finally(() => props.setLoading(false));
   };
