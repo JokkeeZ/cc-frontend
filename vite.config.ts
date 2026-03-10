@@ -4,13 +4,4 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://route-rapid-vulture-cloud-computing.2.rahtiapp.fi",
-        changeOrigin: true,
-      },
-    },
-  },
 });

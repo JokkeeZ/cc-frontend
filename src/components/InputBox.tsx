@@ -13,7 +13,7 @@ export default function InputBox(props: {
     setError(undefined);
     props.setLoading(true);
 
-    fetch("/api", {
+    fetch("https://route-rapid-vulture-cloud-computing.2.rahtiapp.fi/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
