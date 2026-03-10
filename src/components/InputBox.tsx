@@ -44,7 +44,17 @@ export default function InputBox(props: {
         className="btn btn-primary"
         onClick={onButtonClick}
       >
-        Sentiment
+        {props.loading ? (
+          <>
+            <span
+              className="spinner-border spinner-border-sm"
+              aria-hidden="true"
+            ></span>
+            <span role="status">Loading...</span>
+          </>
+        ) : (
+          <>Sentiment</>
+        )}
       </button>
 
       <Activity mode={error ? "visible" : "hidden"}>
