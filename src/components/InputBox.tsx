@@ -12,12 +12,11 @@ export default function InputBox(props: {
     setError(undefined);
     props.setLoading(true);
 
-    // setTimeout(() => {
-    //   props.setLoading(false);
-    // }, 1000);
-
-    fetch("https://route-rapid-vulture-cloud-computing.2.rahtiapp.fi/api", {
+    fetch("/api", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         sentiment: input,
       }),
